@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  node-hcm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./node_hcm:/app
+    ports:
+      - "5001:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+    networks:
+      - distributed_order_net
+    command: flask run --host=0.0.0.0
+
+  node-hn:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./node_hn:/app
+    ports:
+      - "5002:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+    networks:
+      - distributed_order_net
+    command: flask run --host=0.0.0.0
+
+  node-dn:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./node_dn:/app
+    ports:
+      - "5003:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+    networks:
+      - distributed_order_net
+    command: flask run --host=0.0.0.0
+
+networks:
+  distributed_order_net:
+    external: true
