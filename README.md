@@ -142,45 +142,4 @@ Sử dụng script stress test với các tùy chọn khác nhau:
 python simulate_orders.py --orders 1000 --concurrency 10 --endpoint http://localhost:8080
 ```
 
-## Phát Triển
 
-### Thêm Tính Năng Mới
-
-1. **Thêm node kho mới**
-   - Sao chép thư mục một node kho sẵn có
-   - Cập nhật cấu hình
-   - Thêm vào `docker-compose.yml`
-
-2. **Tùy chỉnh logic xử lý**
-   - Sửa trong `app.py` của node kho
-   - Cập nhật DAG của Airflow nếu cần
-
-### Gỡ lỗi (Debug)
-
-1. **Xem log**
-   ```bash
-   # Log Airflow
-   docker-compose logs -f airflow-webserver
-
-   # Log node kho
-   docker-compose logs -f node-hcm
-   ```
-
-2. **Kiểm tra trạng thái node**
-   ```bash
-   curl http://localhost:5001/health
-   ```
-
-## Đóng Góp
-
-1. Fork repository
-2. Tạo nhánh mới để phát triển tính năng
-3. Gửi pull request
-
-## Giấy Phép
-
-Giấy phép MIT
-
-## Hỗ Trợ
-
-Nếu có câu hỏi hoặc vấn đề, vui lòng tạo issue trong repository.
